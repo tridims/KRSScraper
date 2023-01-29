@@ -56,7 +56,19 @@ DEFAULT_PAYLOADS = [
     Payload("0", "4", "", "CARI JADWAL", "1"),
     Payload("0", "5", "", "CARI JADWAL", "1"),
     Payload("0", "6", "", "CARI JADWAL", "1"),
+
+    # Hari minggu (kalau tidak ada, bakal error)
     # Payload("0", "7", "", "CARI JADWAL", "1"),
+
+    # Jadwal lintas prodi dalam fakultas
+    Payload("1", "1", "", "CARI JADWAL", "1"),
+    Payload("1", "2", "", "CARI JADWAL", "1"),
+    Payload("1", "3", "", "CARI JADWAL", "1"),
+    Payload("1", "4", "", "CARI JADWAL", "1"),
+    Payload("1", "5", "", "CARI JADWAL", "1"),
+    Payload("1", "6", "", "CARI JADWAL", "1"),
+
+
 ]
 
 DEFAULT_CONFIGURATION = Configuration()

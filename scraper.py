@@ -19,22 +19,24 @@ class KRSScraper:
         return response
 
     def _parse_response_to_daftaframe(self, response):
-        try:
-            soup = BeautifulSoup(response.content, "lxml")
-            tables = soup.find_all("table")
-            data = tables[1]
-            df = pd.read_html(str(data))
-        except:
-            print("Error parsing response, possible cause: invalid PHPSESSID")
-            exit()
+        soup = BeautifulSoup(response.content, "lxml")
+        tables = soup.find_all("table")
+        data = tables[1]
+        df = pd.read_html(str(data))
+        # make the first row as column name
+        # df[3].columns = df[3].iloc[0]
         return df[3]
 
     def scrape(self):
         list_df_result = []
         for payload in self.list_payload:
-            response = self._send_request(payload)
-            df = self._parse_response_to_daftaframe(response)
-            list_df_result.append(df)
+            try:
+                response = self._send_request(payload)
+                df = self._parse_response_to_daftaframe(response)
+                list_df_result.append(df)
+            except:
+                print("Error with this configuration : " +
+                      str(payload.get_payload()))
 
         self.result = pd.concat(list_df_result)
         return self.result

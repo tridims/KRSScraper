@@ -6,3 +6,4 @@ if __name__ == "__main__":
     result = scraper.scrape()
 
     print(result)
+    scraper.save("result.csv")
